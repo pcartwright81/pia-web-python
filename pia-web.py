@@ -147,7 +147,7 @@ def render_page(pia: PIA) -> str:
     action_label = "Disconnect" if connected else "Connect"
     action_cls   = "btn-danger" if connected else "btn-success"
 
-    pf_display = f"Port: {pf_status}" if pf_status.isdigit() else pf_status
+    pf_display = f"Port Forward Port: {pf_status}" if pf_status.isdigit() else f"Port Forward: {pf_status}"
 
     options_html = "\n".join(
         f'<option value="{r}" {"selected" if r == region else ""}>{r}</option>'
@@ -266,7 +266,7 @@ def render_page(pia: PIA) -> str:
 
   <div class="badge-row">
     <span class="badge"><span class="dot" style="background:{sc};box-shadow:0 0 5px {sc}"></span>{state}</span>
-    <span class="badge"><span class="dot" style="background:{pc};box-shadow:0 0 5px {pc}"></span>PF: {pf_display}</span>
+    <span class="badge"><span class="dot" style="background:{pc};box-shadow:0 0 5px {pc}"></span>{pf_display}</span>
   </div>
 
   <div class="info-grid">
