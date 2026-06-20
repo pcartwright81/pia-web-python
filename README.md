@@ -12,28 +12,33 @@ Controls the PIA VPN client via `piactl` through a simple web UI. Requires only 
 ## Usage
 
 ```bash
-# Make executable
 chmod +x pia-web.py
-
-# Start with defaults (port 8080, piactl on PATH)
 ./pia-web.py
-
-# Custom options
-./pia-web.py --port 9090 --piactl /usr/local/bin/piactl
-
-# Help
-./pia-web.py --help
 ```
 
-Then open `http://<your-server-ip>:8080` in a browser.
+Then open `http://<your-server-ip>:8042` in a browser.
+
+```
+Options:
+  --port PORT       Port to listen on (default: 8042)
+  --host HOST       Host to bind to (default: 0.0.0.0)
+  --piactl PATH     Path to piactl binary (default: piactl)
+```
 
 ## Features
 
-- Display connection status
-- Display and change the selected region
-- Connect / Disconnect the VPN
-- Toggle port forwarding on/off
-- Dark UI, no dependencies
+| Feature | piactl command |
+|---|---|
+| VPN connection state (detailed) | `get connectionstate` |
+| Public IP & VPN IP display | `get pubip` / `get vpnip` |
+| Region selector | `get/set region` |
+| Protocol selector (OpenVPN / WireGuard) | `get/set protocol` |
+| Connect / Disconnect | `connect` / `disconnect` |
+| Port forward status & request toggle | `get portforward` / `set requestportforward` |
+| Allow LAN toggle | `get/set allowlan` |
+| Background mode toggle | `background enable/disable` |
+| Debug logging toggle | `get/set debuglogging` |
+| Reset daemon settings | `resetsettings` |
 
 ## Credits
 
